@@ -6,6 +6,8 @@ const port = 3000
 const DB_USER = 'felipe'
 const DB_PASSWORD = encodeURIComponent('geeGWVyf3zoRpt5w')
 
+const Person = require('./models/Person');
+
 app.use(
     express.urlencoded({
         extended: true,
@@ -13,6 +15,23 @@ app.use(
 )
 
 app.use(express.json())
+
+app.post('/person', async (req, res) => {
+    const {name, salary, approved} = req.body
+
+    const person = {
+        name,
+        salary,
+        approved
+    }
+
+    try {
+        
+    } catch (error) {
+        res.status(500).json({error: error})
+    }
+
+})
 
 app.get('/', (req, res) => {
     res.json({ message: "Oi Express" })
